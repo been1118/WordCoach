@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WordCoach 브로슈어</title>
+  <style>
+    :root {
+      --ink: #17202a;
+      --muted: #52616b;
+      --line: #d8e6e3;
+      --paper: #fffdfa;
+      --soft: #f3f8f6;
+      --teal: #087f8c;
+      --blue: #3167c9;
+      --coral: #d65f4c;
+      --gold: #b47b18;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+
+    main {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 36px 20px 56px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 260px;
+      gap: 34px;
+      align-items: center;
+      min-height: 430px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--teal);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 680px;
+      font-size: clamp(42px, 8vw, 86px);
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 680px;
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: 20px;
+    }
+
+    .hero-visual {
+      justify-self: end;
+      width: min(100%, 250px);
+    }
+
+    .app-icon {
+      display: block;
+      width: 100%;
+      border-radius: 22%;
+      box-shadow: 0 24px 50px rgba(18, 60, 90, 0.18);
+    }
+
+    .fact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+
+    .fact {
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    section {
+      padding: 44px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 220px minmax(0, 1fr);
+      gap: 30px;
+      align-items: start;
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 15px;
+      color: var(--teal);
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .section-title {
+      margin: 0;
+      max-width: 740px;
+      font-size: clamp(26px, 4vw, 42px);
+      line-height: 1.16;
+      letter-spacing: 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      min-height: 190px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .card strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      height: 28px;
+      margin-bottom: 14px;
+      padding: 0 10px;
+      border-radius: 7px;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 800;
+      background: var(--blue);
+    }
+
+    .badge.gold { background: var(--gold); }
+    .badge.coral { background: var(--coral); }
+
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 18px;
+    }
+
+    .panel {
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--soft);
+    }
+
+    .panel h3 {
+      margin: 0 0 12px;
+      font-size: 24px;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    li + li { margin-top: 8px; }
+
+    .quote {
+      margin: 0;
+      padding: 28px;
+      border-left: 5px solid var(--coral);
+      background: #fff;
+      font-size: 26px;
+      line-height: 1.35;
+      font-weight: 800;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .metric {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .metric strong {
+      display: block;
+      margin-top: 6px;
+      font-size: 20px;
+    }
+
+    footer {
+      padding-top: 28px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    footer a { color: var(--teal); }
+
+    @media (max-width: 780px) {
+      main { padding-top: 24px; }
+      .hero, .section-head, .split { grid-template-columns: 1fr; }
+      .hero { min-height: auto; padding-bottom: 36px; }
+      .hero-visual { justify-self: start; width: 132px; }
+      .grid, .meta-grid { grid-template-columns: 1fr; }
+    }
+
+    @media print {
+      body { background: #fff; }
+      main { max-width: none; padding: 20mm; }
+      .hero { min-height: 260px; }
+      .card, .panel, .metric { break-inside: avoid; }
+      footer a { color: var(--ink); text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header class="hero">
+      <div>
+        <p class="eyebrow">서버 없는 iOS 단어 학습 코치</p>
+        <h1>외우고 싶은 단어를 오늘의 습관으로.</h1>
+        <p class="lead">WordCoach는 사용자가 직접 등록한 단어를 복습 큐, 퀴즈, 로컬 알림, 홈 화면 위젯으로 자연스럽게 다시 만나게 해주는 SwiftUI 단어 학습 앱입니다.</p>
+        <div class="fact-row" aria-label="핵심 정보">
+          <span class="fact">SwiftUI</span>
+          <span class="fact">SwiftData</span>
+          <span class="fact">WidgetKit</span>
+          <span class="fact">AdMob + UMP</span>
+          <span class="fact">StoreKit 2</span>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img class="app-icon" src="./assets/wordcoach-icon.png" alt="WordCoach 앱 아이콘">
+      </div>
+    </header>
+
+    <section>
+      <div class="section-head">
+        <h2>Product</h2>
+        <p class="section-title">단어 등록에서 복습까지, 사용자가 매일 돌아오게 만드는 작은 학습 루프.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <span class="badge">01</span>
+          <strong>내 단어장</strong>
+          <p>외우고 싶은 단어, 뜻, 예문, 태그, 메모를 직접 등록하고 언제든 수정·삭제할 수 있습니다.</p>
+        </article>
+        <article class="card">
+          <span class="badge gold">02</span>
+          <strong>복습과 퀴즈</strong>
+          <p>플래시카드와 객관식 퀴즈로 단어를 다시 만나고, 정답률과 복습 기록으로 다음 학습을 조정합니다.</p>
+        </article>
+        <article class="card">
+          <span class="badge coral">03</span>
+          <strong>알림과 위젯</strong>
+          <p>하루 3번 로컬 알림과 홈 화면 위젯이 오늘 등록한 단어와 복습할 단어를 계속 떠올리게 합니다.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Experience</h2>
+        <p class="section-title">학습 앱답게 가볍고 빠르게. 광고와 Pro 기능은 흐름을 방해하지 않게.</p>
+      </div>
+      <div class="split">
+        <div class="panel">
+          <h3>무료 사용자</h3>
+          <ul>
+            <li>하루 10개 단어 등록</li>
+            <li>복습, 퀴즈, 기본 위젯 사용</li>
+            <li>상단 인라인 배너, 일정 횟수 후 전면 광고</li>
+            <li>리워드 광고 시 당일 단어 등록 5개 추가</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>WordCoach Pro</h3>
+          <ul>
+            <li>광고 제거</li>
+            <li>일괄 단어 추가와 연속 입력</li>
+            <li>약한 단어를 우선하는 집중 복습</li>
+            <li>중간/큰 스마트 위젯</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Privacy</h2>
+        <p class="section-title">서버 없이 동작하고, 첫 출시는 ATT 없이 비개인화 광고 방향으로 설계했습니다.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <strong>기기 내 저장</strong>
+          <p>단어장과 복습 기록은 SwiftData로 기기 안에 저장됩니다. 자체 서버로 학습 데이터를 전송하지 않습니다.</p>
+        </article>
+        <article class="card">
+          <strong>로컬 알림</strong>
+          <p>동기부여 알림은 UserNotifications 기반 로컬 알림으로 예약됩니다. 푸시 서버가 필요 없습니다.</p>
+        </article>
+        <article class="card">
+          <strong>광고 동의</strong>
+          <p>AdMob 광고 요청 전 Google UMP 동의를 확인하고, 첫 출시에서는 비개인화 광고 요청을 사용합니다.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Store Copy</h2>
+        <p class="section-title">App Store 소개 문구 초안</p>
+      </div>
+      <p class="quote">WordCoach는 외우고 싶은 단어를 직접 등록하고, 복습 큐와 알림, 위젯으로 매일 다시 만나게 해주는 단어 학습 앱입니다.</p>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Launch</h2>
+        <p class="section-title">출시 준비 요약</p>
+      </div>
+      <div class="meta-grid">
+        <div class="metric">
+          <span>가격 제안</span>
+          <strong>월 2,900원</strong>
+        </div>
+        <div class="metric">
+          <span>평생 Pro</span>
+          <strong>19,000원</strong>
+        </div>
+        <div class="metric">
+          <span>지원 OS</span>
+          <strong>iOS 17+</strong>
+        </div>
+        <div class="metric">
+          <span>아키텍처</span>
+          <strong>Serverless</strong>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>문서: <a href="./privacy.html">개인정보 처리방침</a> · <a href="./terms.html">이용약관</a> · <a href="./support.html">지원</a></p>
+      <p>WordCoach 브로슈어 초안 · 최종 업데이트: 2026년 5월 3일</p>
+    </footer>
+  </main>
+</body>
+</html>
